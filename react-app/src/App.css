@@ -1,0 +1,148 @@
+/* ---- Design tokens (tiny, readable) ---- */
+:root{
+  --container-w: 1100px;
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --radius: 10px;
+  --border: 1px solid #e5e7eb;
+  --muted: #6b7280;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* ---- Layout ---- */
+.container {
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+/* ---- Header ---- */
+.app-header {
+  border-bottom: var(--border);
+  background: #fff;
+}
+.app-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+}
+.app-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .2px;
+  margin: 0;
+}
+.nav {
+  display: flex;
+  gap: var(--space-3);
+}
+.nav a {
+  text-decoration: none;
+  color: #111827;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 6px;
+}
+.nav a.active,
+.nav a:hover { background: #f3f4f6; }
+
+/* ---- Toolbar / Filters Card ---- */
+.section {
+  padding: var(--space-4) 0 var(--space-3);
+}
+.card {
+  border: var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.card + .card { margin-top: var(--space-3); }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: var(--space-4);
+}
+
+.field label {
+  display: block;
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.field select,
+.field input[type="date"] {
+  width: 100%;
+  height: 38px;
+  padding: 0 var(--space-2);
+  border: var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.toolbar__actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  height: 38px;
+  padding: 0 var(--space-3);
+  border-radius: 8px;
+  border: var(--border);
+  background: #fff;
+  cursor: pointer;
+}
+.btn--primary {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+
+/* ---- Helper text / Chips ---- */
+.filters-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: var(--border);
+}
+
+/* ---- Grid of cards ---- */
+.flex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.item {
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  background: #fff;
+}
+.item h3 {
+  margin: 0 0 var(--space-2);
+  font-size: 1.05rem;
+}
+.item .meta {
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+.item .meta + .meta { margin-bottom: var(--space-3); }

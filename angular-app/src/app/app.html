@@ -1,0 +1,107 @@
+<div class="page">
+  <header class="page-header">
+    <div>
+      <h1>Promo Dashboard</h1>
+      <p class="subtitle">
+        Angular version mirroring the React implementation.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Filters card -->
+    <section aria-label="Filters" class="card">
+      <form class="toolbar" (ngSubmit)="applyFilters()">
+        <div class="field">
+          <label for="f-category">Category</label>
+          <select
+            id="f-category"
+            [(ngModel)]="categoryFilter"
+            name="category"
+          >
+            <option value="">All Categories</option>
+            <option>Casino</option>
+            <option>Sports</option>
+            <option>Poker</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-status">Status</label>
+          <select
+            id="f-status"
+            [(ngModel)]="statusFilter"
+            name="status"
+          >
+            <option value="">All Statuses</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-start">Start date</label>
+          <input
+            id="f-start"
+            type="date"
+            [(ngModel)]="startDateFilter"
+            name="start"
+          />
+        </div>
+
+        <div class="field">
+          <label for="f-end">End date</label>
+          <input
+            id="f-end"
+            type="date"
+            [(ngModel)]="endDateFilter"
+            name="end"
+          />
+        </div>
+
+        <div class="toolbar__actions">
+          <button class="btn btn--primary" type="submit">Apply</button>
+          <button class="btn" type="button" (click)="resetFilters()">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Loading state -->
+    <section aria-live="polite" class="card" *ngIf="loading">
+      Loading promotions…
+    </section>
+
+    <!-- Error state -->
+    <section aria-live="polite" class="card error" *ngIf="error && !loading">
+      {{ error }}
+    </section>
+
+    <!-- Promotions list -->
+    <section
+      aria-label="Promotions"
+      class="flex"
+      *ngIf="!loading && !error"
+    >
+      <article
+        class="item"
+        *ngFor="let promo of filteredPromotions"
+      >
+        <h3>{{ promo.title }}</h3>
+        <p class="meta">
+          {{ promo.category }} •
+          {{ promo.active ? 'Active' : 'Inactive' }}
+        </p>
+        <p class="meta">
+          {{ promo.startDate }} → {{ promo.endDate }}
+        </p>
+        <button class="btn btn--primary" (click)="toggleOptIn(promo)">
+          {{ promo.optedIn ? 'Opt Out' : 'Opt In' }}
+        </button>
+      </article>
+
+      <section class="card" *ngIf="filteredPromotions.length === 0">
+        No promotions match your filters.
+      </section>
+    </section>
+  </main>
+</div>

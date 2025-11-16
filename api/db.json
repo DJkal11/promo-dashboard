@@ -1,0 +1,22 @@
+{
+  "promotions": [
+    {
+      "id": "1",
+      "title": "Welcome Bonus",
+      "category": "Casino",
+      "active": true,
+      "startDate": "2025-08-01",
+      "endDate": "2025-08-31",
+      "optedIn": true
+    },
+    {
+      "id": "2",
+      "title": "Sports Free Bet",
+      "category": "Sports",
+      "active": false,
+      "startDate": "2025-11-01",
+      "endDate": "2025-12-01",
+      "optedIn": false
+    }
+  ]
+}
